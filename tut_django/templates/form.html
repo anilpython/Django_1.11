@@ -8,6 +8,11 @@
 {% block form_block %}
 <form method="POST">{% csrf_token %}
     {{ form.as_p}}
-    <button type="button" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
 </form>
+
+{% if form.instance %}
+<h2>{{ form.instance.name }}</h2>
+{% endif %}
+
 {% endblock %}
