@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% if form.errors %}
+{{ form.errors }}
+{% endif %}
+
+<h1>{% block heading %} {{ title }} {% endblock %} </h1>
+{% block form_block %}
+<form method="POST">{% csrf_token %}
+    {{ form.as_p}}
+    <button type="button" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}

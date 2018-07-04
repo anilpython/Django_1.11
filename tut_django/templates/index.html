@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block heading %}
+   Hello {{ page_name }}
+{% endblock %}
+
+{% block hyper_links %}
+ <ul class="breadcrumb">
+  <li><a href="Home/">Home</a></li> |
+  <li><a href="About/">About</a></li> |
+  <li><a href="Contact/">Contact</a></li>
+</ul>
+{% endblock %}
+
+{% block showing_restaurants_names %}
+<ul>
+    {% for restaurant in Restaurant_lists %}
+       <li><h5><a href="/webapp/{{ restaurant.slug }}">{{ restaurant.slug }}</a></h5></li>
+           <li>{{ restaurant.name }} {{ restaurant.location }} {{ restaurant.category }}
+               {{ restaurant.timestamp }} {{ restaurant.updated }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block formset %}
+<form method="POST">{% csrf_token %}
+	{% for form in formset %}
+	{{ form.as_p }}
+	{% endfor %}
+	<button type="button" class="btn btn-success">Save</button>
+</form>
+{% endblock %}
