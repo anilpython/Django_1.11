@@ -8,7 +8,12 @@
  <ul class="breadcrumb">
   <li><a href="Home/">Home</a></li> |
   <li><a href="About/">About</a></li> |
-  <li><a href="Contact/">Contact</a></li>
+  <li><a href="Contact/">Contact</a></li><br>
+  {% if request.user.is_authenticated %}
+  <li><a href="{% url 'webapp:index' %}">Restaurants</a>
+  <li><a href="{% url 'webapp:list_view'%}">Menus</a>
+  <li><a href="{% url 'webapp:create_view' %}">Add One </a></li>
+  {% endif %}
 </ul>
 {% endblock %}
 
